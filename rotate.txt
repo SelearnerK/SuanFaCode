@@ -1,0 +1,28 @@
+
+/**旋转k次问题**/
+/**给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。**/
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        if((nums.size()==1)||(k==nums.size())||(k==0))
+        {return;}
+        if(k>nums.size())
+        {
+            k=k%nums.size();
+        }
+        Reverse(nums,0,nums.size()-1);
+        Reverse(nums,0,k-1);
+        Reverse(nums,k,nums.size()-1);
+
+    }
+    void Reverse(vector<int>& nums,int start,int end)//转置函数
+    {
+        int flag=(end-start)/2;
+        for(int i=0;i<=flag;i++)
+        {
+            int temp=nums[start+i];
+            nums[start+i]=nums[end-i];
+            nums[end-i]=temp;
+        }
+    }
+};
